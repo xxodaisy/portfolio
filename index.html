@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — BI Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --ink-muted: #6b6b64;
+      --ink-faint: #a8a89e;
+      --bg: #f9f7f2;
+      --bg-card: #ffffff;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0ea;
+      --border: #e4e2d8;
+      --nav-bg: rgba(249, 247, 242, 0.92);
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      /* placeholder colors */
+      --ph1: #c8ddd0; --ph2: #d4cfe8; --ph3: #ddd4c8;
+      --ph4: #c8d4dd; --ph5: #ddc8c8; --ph6: #d4ddc8;
+    }
+
+    [data-theme="dark"] {
+      --ink: #e8e6df;
+      --ink-muted: #9e9c94;
+      --ink-faint: #6a6860;
+      --bg: #151513;
+      --bg-card: #1e1e1b;
+      --accent: #6abf85;
+      --accent-light: #1a2e20;
+      --border: #2e2e2a;
+      --nav-bg: rgba(21, 21, 19, 0.92);
+      --ph1: #2a3d31; --ph2: #2e2a3d; --ph3: #3d372a;
+      --ph4: #2a303d; --ph5: #3d2a2a; --ph6: #2e3d2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* NAV */
+    nav#main-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 2rem; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 100px;
+      cursor: pointer; padding: 5px 12px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; color: var(--ink-muted); font-family: var(--sans);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+    /* HERO */
+    .hero { max-width: 720px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+    .hero-tag {
+      display: inline-block; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-light);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc { font-size: 1.05rem; color: var(--ink-muted); max-width: 520px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff;
+      padding: 10px 22px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    [data-theme="dark"] .btn-primary { color: #0e1f14; }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--ink); padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border); font-size: 0.9rem;
+      text-decoration: none; background: var(--bg-card);
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink-muted); }
+
+    /* SECTIONS */
+    section { max-width: 720px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--border); }
+    .section-label {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2rem;
+    }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      font-size: 0.85rem; color: var(--ink); background: var(--bg-card);
+      border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;
+    }
+
+    /* PROJECTS */
+    .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      text-decoration: none; color: inherit; display: block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    /* placeholder thumbnail */
+    .project-thumb {
+      width: 100%; height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-faint); position: relative; overflow: hidden;
+    }
+    .project-thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* replace these with <img src="..." /> when you have real screenshots */
+    .thumb-1 { background: var(--ph1); }
+    .thumb-2 { background: var(--ph2); }
+    .thumb-3 { background: var(--ph3); }
+
+    .project-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem; }
+    .project-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+    .project-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0.75rem; }
+    .tool-badge { font-size: 0.75rem; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 2px 10px; border-radius: 100px; }
+    .project-desc { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6; }
+    .link-icon { font-size: 0.8rem; color: var(--ink-faint); white-space: nowrap; margin-top: 4px; }
+
+    /* BLOG */
+    .blog-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+
+    .blog-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1rem; align-items: center;
+      text-decoration: none; color: inherit;
+      padding: 0.75rem; margin: 0 -0.75rem;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .blog-item:hover { background: var(--accent-light); }
+    .blog-item:hover .blog-title { color: var(--accent); }
+
+    .blog-thumb {
+      width: 80px; height: 60px; border-radius: 6px;
+      flex-shrink: 0; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .blog-thumb-1 { background: var(--ph4); }
+    .blog-thumb-2 { background: var(--ph5); }
+    .blog-thumb-3 { background: var(--ph6); }
+
+    .blog-meta { display: flex; flex-direction: column; gap: 3px; }
+    .blog-title { font-family: var(--serif); font-size: 0.95rem; line-height: 1.4; transition: color 0.15s; }
+    .blog-date { font-size: 0.75rem; color: var(--ink-faint); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 8px;
+      padding: 8px 18px; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    [data-theme="dark"] .btn-outline:hover { color: #0e1f14; }
+
+    /* CONTACT — bold full-width closer */
+    .contact-section {
+      margin-top: 2rem;
+      background: var(--accent);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .contact-inner { max-width: 560px; margin: 0 auto; }
+    .contact-section .section-label { color: rgba(255,255,255,0.55); margin-bottom: 1.25rem; }
+    .contact-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600; line-height: 1.2;
+      color: #fff; margin-bottom: 0.75rem;
+    }
+    [data-theme="dark"] .contact-section h2 { color: #0e1f14; }
+    .contact-section p {
+      font-size: 1rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+    [data-theme="dark"] .contact-section p { color: rgba(14,31,20,0.65); }
+
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .contact-link-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--accent); background: #fff;
+      border-radius: 100px; padding: 8px 20px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    [data-theme="dark"] .contact-link-pill { color: #0e1f14; }
+    .contact-link-pill:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .contact-email {
+      display: inline-block; font-size: 0.9rem;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      margin-bottom: 1.75rem; border-bottom: 1px solid rgba(255,255,255,0.35);
+      padding-bottom: 2px; transition: border-color 0.2s;
+    }
+    [data-theme="dark"] .contact-email { color: rgba(14,31,20,0.75); border-color: rgba(14,31,20,0.3); }
+    .contact-email:hover { border-color: rgba(255,255,255,0.8); }
+
+    footer {
+      text-align: center; padding: 1.5rem 2rem;
+      font-size: 0.8rem; color: var(--ink-faint);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav#main-nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3.5rem; }
+      .contact-section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <div class="nav-left">
+      <span class="nav-name">Your Name</span>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
+      <span id="themeIcon">🌙</span>
+      <span id="themeLabel">Dark</span>
+    </button>
+  </nav>
+
+  <header class="hero">
+    <span class="hero-tag">Open to work</span>
+    <h1>BI Analyst<br /><em>turning dashboards<br />into decisions.</em></h1>
+    <p class="hero-desc">
+      Saya seorang BI Analyst dengan fokus di SQL, dashboard design, dan data storytelling.
+      Suka menemukan cerita di balik angka dan komunikasikan insight ke stakeholder non-teknis.
+    </p>
+    <div class="hero-actions">
+      <a href="/cv-yourname.pdf" download class="btn-primary">↓ Download CV</a>
+      <a href="#projects" class="btn-ghost">Lihat proyek →</a>
+    </div>
+  </header>
+
+  <!-- SKILLS -->
+  <section>
+    <p class="section-label">Skills & Tools</p>
+    <div class="skills-grid">
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Tableau</span>
+      <span class="skill-tag">Power BI</span>
+      <span class="skill-tag">Google Looker Studio</span>
+      <span class="skill-tag">Excel / Spreadsheet</span>
+      <span class="skill-tag">dbt</span>
+      <span class="skill-tag">BigQuery</span>
+      <span class="skill-tag">Data Storytelling</span>
+      <span class="skill-tag">A/B Testing</span>
+      <span class="skill-tag">Statistics</span>
+      <span class="skill-tag">Dashboard Design</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Selected Projects</p>
+    <div class="projects-list">
+
+      <a href="https://github.com/yourname/project1" target="_blank" class="project-card">
+        <!-- Ganti div.project-thumb dengan <img src="/images/project1.png" alt="..." style="width:100%;height:160px;object-fit:cover;display:block;"> -->
+        <div class="project-thumb thumb-1">
+          <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect x="40" y="110" width="40" height="30" rx="3" fill="rgba(45,90,61,0.25)"/>
+            <rect x="100" y="80" width="40" height="60" rx="3" fill="rgba(45,90,61,0.35)"/>
+            <rect x="160" y="55" width="40" height="85" rx="3" fill="rgba(45,90,61,0.45)"/>
+            <rect x="220" y="70" width="40" height="70" rx="3" fill="rgba(45,90,61,0.35)"/>
+            <rect x="280" y="40" width="40" height="100" rx="3" fill="rgba(45,90,61,0.55)"/>
+            <rect x="340" y="60" width="40" height="80" rx="3" fill="rgba(45,90,61,0.4)"/>
+            <rect x="400" y="90" width="40" height="50" rx="3" fill="rgba(45,90,61,0.3)"/>
+            <polyline points="60,112 120,82 180,57 240,72 300,42 360,62 420,92 480,75" fill="none" stroke="rgba(45,90,61,0.7)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-title">Customer Churn Analysis</span>
+            <span class="link-icon">↗ GitHub</span>
+          </div>
+          <p class="project-desc">Menganalisis pola churn pelanggan e-commerce menggunakan dataset 50k+ transaksi. Dashboard interaktif membantu tim retention turunkan churn 12%.</p>
+          <div class="project-tools">
+            <span class="tool-badge">Python</span>
+            <span class="tool-badge">Tableau</span>
+            <span class="tool-badge">PostgreSQL</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/yourname/project2" target="_blank" class="project-card">
+        <div class="project-thumb thumb-2">
+          <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect x="20" y="20" width="170" height="60" rx="6" fill="rgba(83,74,183,0.15)"/>
+            <rect x="20" y="90" width="80" height="50" rx="6" fill="rgba(83,74,183,0.2)"/>
+            <rect x="110" y="90" width="80" height="50" rx="6" fill="rgba(83,74,183,0.2)"/>
+            <rect x="210" y="20" width="170" height="120" rx="6" fill="rgba(83,74,183,0.12)"/>
+            <rect x="230" y="40" width="60" height="8" rx="3" fill="rgba(83,74,183,0.3)"/>
+            <rect x="230" y="58" width="100" height="6" rx="3" fill="rgba(83,74,183,0.2)"/>
+            <rect x="230" y="72" width="80" height="6" rx="3" fill="rgba(83,74,183,0.2)"/>
+            <rect x="230" y="86" width="90" height="6" rx="3" fill="rgba(83,74,183,0.2)"/>
+            <rect x="400" y="20" width="170" height="55" rx="6" fill="rgba(83,74,183,0.15)"/>
+            <rect x="400" y="85" width="170" height="55" rx="6" fill="rgba(83,74,183,0.15)"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-title">Sales Performance Dashboard</span>
+            <span class="link-icon">↗ Live Demo</span>
+          </div>
+          <p class="project-desc">Dashboard real-time monitoring KPI sales per region dengan drill-down hingga level SKU. Digunakan oleh tim 20+ orang setiap hari.</p>
+          <div class="project-tools">
+            <span class="tool-badge">Looker Studio</span>
+            <span class="tool-badge">BigQuery</span>
+            <span class="tool-badge">dbt</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/yourname/project3" target="_blank" class="project-card">
+        <div class="project-thumb thumb-3">
+          <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <polyline points="30,120 90,100 150,85 210,90 270,65 330,70 390,50 450,55 520,40" fill="none" stroke="rgba(180,130,50,0.5)" stroke-width="2" stroke-dasharray="6 3"/>
+            <polyline points="30,130 90,115 150,100 210,108 270,88 330,92 390,72 450,76 520,60" fill="none" stroke="rgba(180,130,50,0.8)" stroke-width="2.5"/>
+            <circle cx="270" cy="88" r="5" fill="rgba(180,130,50,0.9)"/>
+            <circle cx="390" cy="72" r="5" fill="rgba(180,130,50,0.9)"/>
+            <circle cx="520" cy="60" r="5" fill="rgba(180,130,50,0.9)"/>
+            <line x1="30" y1="135" x2="540" y2="135" stroke="rgba(180,130,50,0.3)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-title">Ride-hailing Demand Forecasting</span>
+            <span class="link-icon">↗ GitHub</span>
+          </div>
+          <p class="project-desc">Model prediksi demand ojek online per zona dan jam menggunakan time-series analysis. Akurasi 87% (MAPE &lt; 13%) untuk horizon 7 hari.</p>
+          <div class="project-tools">
+            <span class="tool-badge">Python</span>
+            <span class="tool-badge">Prophet</span>
+            <span class="tool-badge">Pandas</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <p class="section-label">Writing</p>
+    <div class="blog-list">
+
+      <a href="https://medium.com/@yourname/post1" target="_blank" class="blog-item">
+        <!-- Ganti div.blog-thumb dengan <img src="/images/blog1.png" alt="..." style="width:80px;height:60px;object-fit:cover;border-radius:6px;"> -->
+        <div class="blog-thumb blog-thumb-1">📊</div>
+        <div class="blog-meta">
+          <span class="blog-title">5 SQL Query Patterns yang Sering Dipakai BI Analyst</span>
+          <span class="blog-date">Jan 2025</span>
+        </div>
+      </a>
+
+      <a href="https://medium.com/@yourname/post2" target="_blank" class="blog-item">
+        <div class="blog-thumb blog-thumb-2">📈</div>
+        <div class="blog-meta">
+          <span class="blog-title">Cara Bikin Dashboard yang Benar-benar Dipakai Stakeholder</span>
+          <span class="blog-date">Nov 2024</span>
+        </div>
+      </a>
+
+      <a href="https://medium.com/@yourname/post3" target="_blank" class="blog-item">
+        <div class="blog-thumb blog-thumb-3">🐍</div>
+        <div class="blog-meta">
+          <span class="blog-title">Dari Excel ke Power BI: Perjalanan Belajar BI Analysis</span>
+          <span class="blog-date">Sep 2024</span>
+        </div>
+      </a>
+
+    </div>
+    <a href="https://medium.com/@yourname" target="_blank" class="btn-outline">
+      Lihat semua tulisan di Medium →
+    </a>
+  </section>
+
+  <!-- CONTACT — bold closer -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Say hello</p>
+      <h2>Tertarik kolaborasi<br />atau ada peluang menarik?</h2>
+      <p>Gue terbuka untuk full-time, freelance, atau sekadar ngobrol soal data.</p>
+      <a href="mailto:your@email.com" class="contact-email">your@email.com</a>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/yourname" target="_blank" class="contact-link-pill">LinkedIn ↗</a>
+        <a href="https://github.com/yourname" target="_blank" class="contact-link-pill">GitHub ↗</a>
+        <a href="https://medium.com/@yourname" target="_blank" class="contact-link-pill">Medium ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>Built with plain HTML · Hosted on Vercel</footer>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const icon = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(saved || (prefersDark ? 'dark' : 'light'));
+    btn.addEventListener('click', () => setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
+    function setTheme(t) {
+      html.dataset.theme = t;
+      localStorage.setItem('theme', t);
+      icon.textContent = t === 'dark' ? '☀️' : '🌙';
+      label.textContent = t === 'dark' ? 'Light' : 'Dark';
+    }
+  </script>
+
+</body>
+</html>
