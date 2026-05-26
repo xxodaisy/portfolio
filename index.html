@@ -16,7 +16,7 @@
       --ink-muted: #7a7870;
       --ink-faint: #3e3d38;
       --accent: #2d5a3d;
-      --accent-dim: rgba(201,168,76,0.12);
+      --accent-dim: rgba(45,90,61,0.12);
       --border: #252520;
       --card: #141412;
       --serif: 'Playfair Display', Georgia, serif;
@@ -31,7 +31,7 @@
       --ink-muted: #6b6b64;
       --ink-faint: #c8c6be;
       --accent: #1e4a2d;
-      --accent-dim: rgba(138,106,31,0.1);
+      --accent-dim: rgba(30,74,45,0.1);
       --border: #dedad0;
       --card: #ffffff;
     }
@@ -46,7 +46,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -57,180 +57,87 @@
       transition: background 0.3s;
     }
     [data-theme="light"] nav { background: rgba(245,243,238,0.88); }
-
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1rem; font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
+    .nav-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.82rem; color: var(--ink-muted);
-      text-decoration: none; letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
+    .nav-links a { font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
-
     .nav-right { display: flex; align-items: center; gap: 1rem; }
-
     .theme-btn {
-      background: none; border: 1px solid var(--border);
-      border-radius: 100px; cursor: pointer;
-      padding: 4px 14px; font-size: 0.78rem;
+      background: none; border: 1px solid var(--border); border-radius: 100px;
+      cursor: pointer; padding: 4px 14px; font-size: 0.78rem;
       color: var(--ink-muted); font-family: var(--sans);
       transition: border-color 0.2s, color 0.2s;
       display: flex; align-items: center; gap: 5px;
     }
     .theme-btn:hover { border-color: var(--ink-muted); color: var(--ink); }
 
-    /* ── HERO ── */
-    .hero {
-      max-width: 860px; margin: 0 auto;
-      padding: 5rem 2.5rem 4rem;
-    }
-
+    /* HERO */
+    .hero { max-width: 860px; margin: 0 auto; padding: 5rem 2.5rem 4rem; }
     .hero-location {
       display: flex; align-items: center; gap: 6px;
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
     }
     .hero-location::before { content: "📍"; font-size: 0.85rem; }
-
     .hero h1 {
       font-family: var(--serif);
       font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: 800; line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em; margin-bottom: 0.5rem;
     }
-
-    .hero-role {
-      font-size: 1rem; font-weight: 400;
-      color: var(--accent); margin-bottom: 1.25rem;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-desc {
-      font-size: 0.95rem; color: var(--ink-muted);
-      max-width: 480px; margin-bottom: 2.25rem;
-      line-height: 1.75;
-    }
-
+    .hero-role { font-size: 1rem; font-weight: 400; color: var(--accent); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
+    .hero-desc { font-size: 0.95rem; color: var(--ink-muted); max-width: 480px; margin-bottom: 2.25rem; line-height: 1.75; }
     .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #0e0e0c;
+      background: var(--accent); color: #fff;
       padding: 9px 20px; border-radius: 6px;
-      font-size: 0.85rem; font-weight: 500;
-      text-decoration: none; transition: opacity 0.2s;
+      font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: opacity 0.2s;
     }
     .btn-primary:hover { opacity: 0.85; }
-
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
       color: var(--ink); padding: 9px 20px; border-radius: 6px;
       border: 1px solid var(--border); font-size: 0.85rem;
-      text-decoration: none; background: transparent;
-      transition: border-color 0.2s;
+      text-decoration: none; background: transparent; transition: border-color 0.2s;
     }
     .btn-ghost:hover { border-color: var(--ink-muted); }
-
     .hero-socials { display: flex; gap: 1.5rem; }
-    .hero-socials a {
-      font-size: 0.8rem; color: var(--ink-muted);
-      text-decoration: none; transition: color 0.2s;
-    }
+    .hero-socials a { font-size: 0.8rem; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
     .hero-socials a:hover { color: var(--ink); }
 
-    /* ── SECTION BASE ── */
+    /* SECTION */
     .section { max-width: 860px; margin: 0 auto; padding: 4rem 2.5rem; }
     .section + .section { border-top: 1px solid var(--border); }
+    .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 2rem; letter-spacing: -0.01em; }
 
-    .section-title {
-      font-family: var(--serif);
-      font-size: 2rem; font-weight: 700;
-      margin-bottom: 2rem; letter-spacing: -0.01em;
-    }
-
-    /* ── PROJECTS ── */
-    .filter-bar {
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
+    /* FILTER */
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
     .filter-btn {
-      font-size: 0.8rem; padding: 6px 16px;
-      border-radius: 100px; border: 1px solid var(--border);
-      background: transparent; color: var(--ink-muted);
-      cursor: pointer; font-family: var(--sans);
-      transition: all 0.2s;
+      font-size: 0.8rem; padding: 6px 16px; border-radius: 100px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--ink-muted); cursor: pointer; font-family: var(--sans); transition: all 0.2s;
     }
     .filter-btn:hover { border-color: var(--ink-muted); color: var(--ink); }
-    .filter-btn.active {
-      background: var(--ink); color: var(--bg);
-      border-color: var(--ink);
-    }
-    [data-theme="light"] .filter-btn.active { background: var(--ink); color: #fff; }
+    .filter-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    [data-theme="light"] .filter-btn.active { color: #fff; }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1rem;
-    }
-
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
     .project-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      text-decoration: none; color: inherit; display: flex;
-      flex-direction: column;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
     }
     .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-
-    .project-thumb {
-      width: 100%; height: 150px; position: relative; overflow: hidden;
-    }
-    .project-thumb svg { width: 100%; height: 100%; display: block; }
-
-    /* replace with: <img src="/images/proj.png" style="width:100%;height:150px;object-fit:cover;display:block;"> */
-    .thumb-1 { background: #141c14; }
-    .thumb-2 { background: #141418; }
-    .thumb-3 { background: #1c1810; }
-
-    [data-theme="light"] .thumb-1 { background: #d8ead8; }
-    [data-theme="light"] .thumb-2 { background: #d8d8ea; }
-    [data-theme="light"] .thumb-3 { background: #ead8c8; }
-
     .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
-
-    .project-meta {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 0.6rem;
-    }
-
-    .project-cat {
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--accent);
-    }
-
-    .project-status {
-      font-size: 0.7rem; padding: 2px 10px;
-      border-radius: 100px; border: 1px solid;
-      font-weight: 500;
-    }
-    .status-live { color: #5db87a; border-color: rgba(93,184,122,0.35); }
-    .status-archived { color: var(--ink-muted); border-color: var(--border); }
-
-    .project-title {
-      font-family: var(--serif); font-size: 1.15rem;
-      font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;
-    }
-
+    .project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+    .project-cat { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .view-link { font-size: 0.75rem; color: var(--ink-muted); white-space: nowrap; }
+    .project-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
     .project-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.65; flex: 1; }
-
     .project-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
     .tool-tag {
       font-size: 0.72rem; color: var(--ink-muted);
@@ -238,106 +145,71 @@
       padding: 2px 10px; border-radius: 4px;
     }
 
-    /* ── SKILLS ── */
+    /* SKILLS */
     .skills-groups { display: flex; flex-direction: column; gap: 2rem; }
-
-    .skill-group-label {
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
+    .skill-group-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
     .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-chip {
-      font-size: 0.85rem; color: var(--ink);
-      border: 1px solid var(--border);
-      padding: 5px 16px; border-radius: 100px;
-      background: transparent;
+      font-size: 0.85rem; color: var(--ink); border: 1px solid var(--border);
+      padding: 5px 16px; border-radius: 100px; background: transparent;
       transition: border-color 0.2s, background 0.2s;
     }
     .skill-chip:hover { border-color: var(--accent); background: var(--accent-dim); }
 
-    /* ── BLOG ── */
+    /* BLOG */
     .blog-list { display: flex; flex-direction: column; }
-
     .blog-item {
-      display: grid; grid-template-columns: 100px 1fr auto;
-      align-items: center; gap: 1.25rem;
-      padding: 1rem 0; border-bottom: 1px solid var(--border);
-      text-decoration: none; color: inherit;
-      transition: background 0.15s;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: start; gap: 1.25rem;
+      padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit; transition: opacity 0.15s;
     }
     .blog-item:first-child { border-top: 1px solid var(--border); }
     .blog-item:hover .blog-title { color: var(--accent); }
-
-    .blog-date-col { font-size: 0.75rem; color: var(--ink-muted); white-space: nowrap; }
-
-    .blog-title {
-      font-size: 0.95rem; line-height: 1.4;
-      transition: color 0.15s;
-    }
-    .blog-desc { font-size: 0.8rem; color: var(--ink-muted); margin-top: 3px; }
-
-    .blog-arrow { font-size: 0.9rem; color: var(--ink-faint); }
-
+    .blog-date { font-size: 0.72rem; color: var(--ink-muted); margin-bottom: 4px; }
+    .blog-title { font-size: 0.95rem; line-height: 1.4; transition: color 0.15s; margin-bottom: 3px; }
+    .blog-desc { font-size: 0.8rem; color: var(--ink-muted); }
+    .blog-arrow { font-size: 0.9rem; color: var(--ink-faint); margin-top: 2px; }
     .blog-cta { margin-top: 1.5rem; }
-
     .btn-outline {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.82rem; color: var(--accent);
       border: 1px solid var(--accent); border-radius: 6px;
-      padding: 8px 18px; text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      padding: 8px 18px; text-decoration: none; transition: background 0.2s, color 0.2s;
     }
-    .btn-outline:hover { background: var(--accent); color: #0e0e0c; }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
 
-    /* ── ABOUT + CONTACT ── */
+    /* ABOUT + CONTACT */
     .about-contact {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      max-width: 860px; margin: 0 auto;
       padding: 4rem 2.5rem; border-top: 1px solid var(--border);
     }
-
-    .about-title {
-      font-family: var(--serif); font-size: 2rem;
-      font-weight: 700; margin-bottom: 1rem;
-    }
-
+    .about-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
     .about-text { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.75; margin-bottom: 1.5rem; }
-
-    .contact-label {
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
-    }
-
+    .contact-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
     .contact-email {
       display: block; font-size: 1.1rem; font-weight: 500;
-      color: var(--ink); text-decoration: none;
-      margin-bottom: 1.25rem;
-      transition: color 0.2s;
+      color: var(--ink); text-decoration: none; margin-bottom: 1.25rem; transition: color 0.2s;
     }
     .contact-email:hover { color: var(--accent); }
-
     .contact-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .contact-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.8rem; color: var(--ink);
-      border: 1px solid var(--border); border-radius: 100px;
-      padding: 5px 16px; text-decoration: none;
+      font-size: 0.8rem; color: var(--ink); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 16px; text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
     }
     .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 1.25rem 2.5rem;
+      border-top: 1px solid var(--border); padding: 1.25rem 2.5rem;
       display: flex; justify-content: space-between; align-items: center;
       font-size: 0.75rem; color: var(--ink-muted);
-      max-width: 100%;
     }
 
-    /* ── MOBILE ── */
+    /* MOBILE */
     @media (max-width: 640px) {
       nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
@@ -345,7 +217,6 @@
       .hero { padding-top: 3rem; }
       .projects-grid { grid-template-columns: 1fr; }
       .about-contact { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 1.25rem; }
-      .blog-item { grid-template-columns: 80px 1fr auto; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -372,7 +243,7 @@
   <!-- HERO -->
   <header class="hero">
     <p class="hero-location">Depok, Indonesia</p>
-    <h1>Nur Fathia A/h1>
+    <h1>Nur Fathia A</h1>
     <p class="hero-role">BI Analyst &amp; Data Storyteller</p>
     <p class="hero-desc">
       Passionate about turning raw data into clear, actionable decisions.
@@ -397,40 +268,35 @@
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="dashboard">Dashboard</button>
       <button class="filter-btn" data-filter="analysis">Analysis</button>
-      <!-- <button class="filter-btn" data-filter="forecasting">Forecasting</button> -->
     </div>
 
     <div class="projects-grid" id="projectsGrid">
 
-      <a href="https://www.notion.so/HR-Data-Overhaul-Cleaning-Analyzing-Visualizing-Employee-Data-with-Excel-343d83afd146805a9440c4bc701eb939?source=copy_link">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HR-overhaul"
+      <a href="https://www.notion.so/HR-Data-Overhaul-Cleaning-Analyzing-Visualizing-Employee-Data-with-Excel-343d83afd146805a9440c4bc701eb939?source=copy_link" target="_blank"
+         class="project-card" data-category="analysis">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop" alt="HR Data Overhaul"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Analysis · 2026</span>
-            <span class="project-status status-archived">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
-          <h3 class="project-title">HR Data Overhaul: Cleaning, Analyzing & Visualizing Employee Data with Excel</h3>
+          <h3 class="project-title">HR Data Overhaul: Cleaning, Analyzing &amp; Visualizing Employee Data with Excel</h3>
           <p class="project-desc">In this project, my focus was on how to clean the data, how to derive insights and recommendations, and the specific points I wanted to analyze from the data.</p>
           <div class="project-tools">
             <span class="tool-tag">Excel / Spreadsheet</span>
-            <!-- <span class="tool-tag">Power BI</span> -->
-            <!-- <span class="tool-tag">Dbeaver</span> -->
           </div>
         </div>
       </a>
 
-    </div>
-  </section>
-
       <a href="https://www.notion.so/Shopping-Mall-Paid-Search-Campaign-Business-Analytics-Projects-2c3d83afd146807eb025f48234e572be?source=copy_link" target="_blank"
          class="project-card" data-category="dashboard">
-        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shopping Mall Paid"
+        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=872&auto=format&fit=crop" alt="Shopping Mall Paid Search"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Dashboard · 2025</span>
-            <span class="project-status status-live">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
           <h3 class="project-title">Shopping Mall Paid Search Campaign</h3>
           <p class="project-desc">A shopping mall wants to understand the effectiveness of their paid search campaign over five months period in 2021.</p>
@@ -438,19 +304,18 @@
             <span class="tool-tag">Excel / Spreadsheet</span>
             <span class="tool-tag">Tableau</span>
             <span class="tool-tag">PostgreSQL</span>
-            <!-- <span class="tool-tag">SQL</span> -->
           </div>
         </div>
       </a>
 
       <a href="https://www.notion.so/E-Learning-BI-Case-Study-Dummy-Dataset-2aed83afd146811b85c3df605c1d3f09?source=copy_link" target="_blank"
          class="project-card" data-category="analysis">
-        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="E-learning"
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop" alt="E-Learning BI"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Analysis · 2025</span>
-            <span class="project-status status-live">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
           <h3 class="project-title">E-Learning BI Case Study (Dummy Dataset)</h3>
           <p class="project-desc">This project simulates a specialized online platform that allows users to purchase courses with or without discount vouchers, redeem vouchers, enroll in classes, and complete classes.</p>
@@ -465,12 +330,12 @@
 
       <a href="https://www.notion.so/Supermarket-Sales-Analysis-Data-Analyst-Project-2b9d83afd14680dfb6f5d2acc3a65c0d?source=copy_link" target="_blank"
          class="project-card" data-category="analysis">
-        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Supermarket"
+        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1074&auto=format&fit=crop" alt="Supermarket Sales"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Analysis · 2023</span>
-            <span class="project-status status-archived">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
           <h3 class="project-title">Supermarket Sales Analysis</h3>
           <p class="project-desc">Piggy Bank sought to enhance customer loyalty and reduce churn rates by identifying and targeting customers at a high risk of exiting the bank.</p>
@@ -482,46 +347,38 @@
         </div>
       </a>
 
-    </div>
-  </section>
-
       <a href="https://www.notion.so/Second-Hand-Car-Sales-2aed83afd1468199a48dd9e9f0e87677?source=copy_link" target="_blank"
          class="project-card" data-category="analysis">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=983&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="second-car"
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=983&auto=format&fit=crop" alt="Second Hand Car"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Analysis · 2023</span>
-            <span class="project-status status-archived">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
           <h3 class="project-title">Second-Hand Car Sales</h3>
           <p class="project-desc">This project is the final assignment of the data analyst bootcamp — assuming there is a company considering building a used car sales business model.</p>
           <div class="project-tools">
             <span class="tool-tag">Python</span>
             <span class="tool-tag">Power BI</span>
-            <!-- <span class="tool-tag">Dbeaver</span> -->
           </div>
         </div>
       </a>
 
-    </div>
-  </section>
-
       <a href="https://www.notion.so/Food-Story-Sales-Performance-Analysis-2aed83afd146812284c7f60cf1c9d9c6?source=copy_link" target="_blank"
          class="project-card" data-category="analysis">
-        <img src="https://media.getredy.id/images/users/61231/14494001331628847327.png" alt="food-story"
+        <img src="https://media.getredy.id/images/users/61231/14494001331628847327.png" alt="Food Story"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
           <div class="project-meta">
             <span class="project-cat">Analysis · 2023</span>
-            <span class="project-status status-archived">Live</span>
+            <span class="view-link">↗ View Project</span>
           </div>
           <h3 class="project-title">Food Story – Sales Performance Analysis</h3>
           <p class="project-desc">Food Story is a cloud kitchen that operates many branches in Jakarta and other cities. The company wants to understand the factors that affect sales performance.</p>
           <div class="project-tools">
             <span class="tool-tag">Excel / Spreadsheet</span>
             <span class="tool-tag">Power BI</span>
-            <!-- <span class="tool-tag">Dbeaver</span> -->
           </div>
         </div>
       </a>
@@ -534,18 +391,16 @@
     <h2 class="section-title">Skills</h2>
     <div class="skills-groups">
       <div>
-        <p class="skill-group-label">Data & Analytics</p>
+        <p class="skill-group-label">Data &amp; Analytics</p>
         <div class="skill-chips">
           <span class="skill-chip">SQL</span>
           <span class="skill-chip">Python</span>
           <span class="skill-chip">Pandas</span>
-          <!-- <span class="skill-chip">Statistics</span> -->
-          <!-- <span class="skill-chip">A/B Testing</span> -->
           <span class="skill-chip">Data Storytelling</span>
         </div>
       </div>
       <div>
-        <p class="skill-group-label">BI & Visualization</p>
+        <p class="skill-group-label">BI &amp; Visualization</p>
         <div class="skill-chips">
           <span class="skill-chip">Metabase</span>
           <span class="skill-chip">Apache Superset</span>
@@ -556,7 +411,7 @@
         </div>
       </div>
       <div>
-        <p class="skill-group-label">Tools & Platforms</p>
+        <p class="skill-group-label">Tools &amp; Platforms</p>
         <div class="skill-chips">
           <span class="skill-chip">Docker</span>
           <span class="skill-chip">dbt</span>
@@ -573,29 +428,29 @@
     <h2 class="section-title">Writing</h2>
     <div class="blog-list">
 
-      <a href=""https://fleursansvoix.medium.com/setup-apache-superset-dengan-docker-26a47a9bcdc6" target="_blank" class="blog-item">
-        <!-- <span class="blog-date-col">21 May 2026</span> -->
+      <a href="https://fleursansvoix.medium.com/setup-apache-superset-dengan-docker-26a47a9bcdc6" target="_blank" class="blog-item">
         <div>
+          <p class="blog-date">21 May 2026</p>
           <p class="blog-title">Learn about Using Apache Superset</p>
-          <p class="blog-desc">Practical using Apache Superset and setting up before use the data visualization.</p>
+          <p class="blog-desc">Practical guide to setting up Apache Superset with Docker for data visualization.</p>
         </div>
         <span class="blog-arrow">→</span>
       </a>
 
       <a href="https://fleursansvoix.medium.com/belajar-etl-pipeline-1-introduction-be31a60c38f0" target="_blank" class="blog-item">
-        <!-- <span class="blog-date-col">22 Nov 2024</span> -->
         <div>
+          <p class="blog-date">22 Nov 2024</p>
           <p class="blog-title">Understanding the ETL Pipeline</p>
-          <p class="blog-desc">Studying about the ETL Pipeline.</p>
+          <p class="blog-desc">An introduction to ETL concepts and how data flows through a pipeline.</p>
         </div>
         <span class="blog-arrow">→</span>
       </a>
 
       <a href="https://medium.com/learning-data/how-to-set-up-postgresql-and-metabase-using-docker-6e792deff4f6" target="_blank" class="blog-item">
-        <!-- <span class="blog-date-col">5 Sep 2024</span> -->
         <div>
+          <p class="blog-date">5 Sep 2024</p>
           <p class="blog-title">How to Set Up PostgreSQL and Metabase Using Docker</p>
-          <p class="blog-desc">Practical using Metabase.</p>
+          <p class="blog-desc">Step-by-step guide to running Metabase with PostgreSQL in a Docker environment.</p>
         </div>
         <span class="blog-arrow">→</span>
       </a>
@@ -619,9 +474,9 @@
     </div>
     <div>
       <p class="contact-label">Get in touch</p>
-      <a href="mailto:your@email.com" class="contact-email">work.nurfathia@gmail.com</a>
+      <a href="mailto:work.nurfathia@gmail.com" class="contact-email">work.nurfathia@gmail.com</a>
       <div class="contact-pills">
-        <a href="https://www.linkedin.com/in/nur-fathia-achmadi/e" target="_blank" class="contact-pill">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/in/nur-fathia-achmadi/" target="_blank" class="contact-pill">LinkedIn ↗</a>
         <a href="https://github.com/xxodaisy" target="_blank" class="contact-pill">GitHub ↗</a>
         <a href="https://medium.com/@fleursansvoix" target="_blank" class="contact-pill">Medium ↗</a>
       </div>
@@ -640,12 +495,9 @@
     const icon = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');
     const html = document.documentElement;
-
     const saved = localStorage.getItem('theme') || 'dark';
     setTheme(saved);
-
     btn.addEventListener('click', () => setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
-
     function setTheme(t) {
       html.dataset.theme = t;
       localStorage.setItem('theme', t);
@@ -656,12 +508,11 @@
     // Project filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
+    filterBtns.forEach(b => {
+      b.addEventListener('click', () => {
+        filterBtns.forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        const f = b.dataset.filter;
         cards.forEach(card => {
           card.style.display = (f === 'all' || card.dataset.category === f) ? 'flex' : 'none';
         });
