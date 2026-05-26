@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nur Fathia A — BI Analyst</title>
+  <title>Your Name — BI Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #1a1a18;
-      --ink-muted: #6b6b64;
-      --ink-faint: #a8a89e;
-      --bg: #f9f7f2;
-      --bg-card: #ffffff;
+      --bg: #0e0e0c;
+      --bg2: #161614;
+      --ink: #e8e6df;
+      --ink-muted: #7a7870;
+      --ink-faint: #3e3d38;
       --accent: #2d5a3d;
-      --accent-light: #e8f0ea;
-      --border: #e4e2d8;
-      --nav-bg: rgba(249, 247, 242, 0.92);
-      --serif: 'Lora', Georgia, serif;
+      --accent-dim: rgba(201,168,76,0.12);
+      --border: #252520;
+      --card: #141412;
+      --serif: 'Playfair Display', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
-      /* placeholder colors */
-      --ph1: #c8ddd0; --ph2: #d4cfe8; --ph3: #ddd4c8;
-      --ph4: #c8d4dd; --ph5: #ddc8c8; --ph6: #d4ddc8;
+      --radius: 10px;
     }
 
-    [data-theme="dark"] {
-      --ink: #e8e6df;
-      --ink-muted: #9e9c94;
-      --ink-faint: #6a6860;
-      --bg: #151513;
-      --bg-card: #1e1e1b;
-      --accent: #6abf85;
-      --accent-light: #1a2e20;
-      --border: #2e2e2a;
-      --nav-bg: rgba(21, 21, 19, 0.92);
-      --ph1: #2a3d31; --ph2: #2e2a3d; --ph3: #3d372a;
-      --ph4: #2a303d; --ph5: #3d2a2a; --ph6: #2e3d2a;
+    [data-theme="light"] {
+      --bg: #f5f3ee;
+      --bg2: #edeae3;
+      --ink: #1a1a18;
+      --ink-muted: #6b6b64;
+      --ink-faint: #c8c6be;
+      --accent: #1e4a2d;
+      --accent-dim: rgba(138,106,31,0.1);
+      --border: #dedad0;
+      --card: #ffffff;
     }
 
     html { scroll-behavior: smooth; }
@@ -46,449 +42,634 @@
       font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
-      font-size: 16px;
-      line-height: 1.7;
-      transition: background 0.25s, color 0.25s;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* NAV */
-    nav#main-nav {
+    /* ── NAV ── */
+    nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
-      height: 56px;
+      padding: 0 2.5rem; height: 56px;
+      background: rgba(14,14,12,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
     }
-    .nav-left { display: flex; align-items: center; gap: 2rem; }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+    [data-theme="light"] nav { background: rgba(245,243,238,0.88); }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.875rem; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a {
+      font-size: 0.82rem; color: var(--ink-muted);
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--ink); }
 
-    .theme-toggle {
-      background: none; border: 1px solid var(--border); border-radius: 100px;
-      cursor: pointer; padding: 5px 12px;
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.8rem; color: var(--ink-muted); font-family: var(--sans);
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .theme-toggle:hover { border-color: var(--ink-muted); color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
 
-    /* HERO */
-    .hero { max-width: 720px; margin: 0 auto; padding: 6rem 2rem 4rem; }
-    .hero-tag {
-      display: inline-block; font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); background: var(--accent-light);
-      padding: 4px 12px; border-radius: 100px; margin-bottom: 1.5rem;
+    .theme-btn {
+      background: none; border: 1px solid var(--border);
+      border-radius: 100px; cursor: pointer;
+      padding: 4px 14px; font-size: 0.78rem;
+      color: var(--ink-muted); font-family: var(--sans);
+      transition: border-color 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 5px;
     }
+    .theme-btn:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px; margin: 0 auto;
+      padding: 5rem 2.5rem 4rem;
+    }
+
+    .hero-location {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+    }
+    .hero-location::before { content: "📍"; font-size: 0.85rem; }
+
     .hero h1 {
-      font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.2rem);
-      line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; margin-bottom: 1.25rem;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800; line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero-desc { font-size: 1.05rem; color: var(--ink-muted); max-width: 520px; margin-bottom: 2rem; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    .hero-role {
+      font-size: 1rem; font-weight: 400;
+      color: var(--accent); margin-bottom: 1.25rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem; color: var(--ink-muted);
+      max-width: 480px; margin-bottom: 2.25rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #fff;
-      padding: 10px 22px; border-radius: 8px;
-      font-size: 0.9rem; font-weight: 500; text-decoration: none;
-      transition: opacity 0.2s;
+      background: var(--accent); color: #0e0e0c;
+      padding: 9px 20px; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s;
     }
-    [data-theme="dark"] .btn-primary { color: #0e1f14; }
     .btn-primary:hover { opacity: 0.85; }
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      color: var(--ink); padding: 10px 22px; border-radius: 8px;
-      border: 1px solid var(--border); font-size: 0.9rem;
-      text-decoration: none; background: var(--bg-card);
+      color: var(--ink); padding: 9px 20px; border-radius: 6px;
+      border: 1px solid var(--border); font-size: 0.85rem;
+      text-decoration: none; background: transparent;
       transition: border-color 0.2s;
     }
     .btn-ghost:hover { border-color: var(--ink-muted); }
 
-    /* SECTIONS */
-    section { max-width: 720px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--border); }
-    .section-label {
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2rem;
+    .hero-socials { display: flex; gap: 1.5rem; }
+    .hero-socials a {
+      font-size: 0.8rem; color: var(--ink-muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .hero-socials a:hover { color: var(--ink); }
+
+    /* ── SECTION BASE ── */
+    .section { max-width: 860px; margin: 0 auto; padding: 4rem 2.5rem; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 2rem; font-weight: 700;
+      margin-bottom: 2rem; letter-spacing: -0.01em;
     }
 
-    /* SKILLS */
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag {
-      font-size: 0.85rem; color: var(--ink); background: var(--bg-card);
-      border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;
+    /* ── PROJECTS ── */
+    .filter-bar {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
 
-    /* PROJECTS */
-    .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .filter-btn {
+      font-size: 0.8rem; padding: 6px 16px;
+      border-radius: 100px; border: 1px solid var(--border);
+      background: transparent; color: var(--ink-muted);
+      cursor: pointer; font-family: var(--sans);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--ink-muted); color: var(--ink); }
+    .filter-btn.active {
+      background: var(--ink); color: var(--bg);
+      border-color: var(--ink);
+    }
+    [data-theme="light"] .filter-btn.active { background: var(--ink); color: #fff; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1rem;
+    }
 
     .project-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      text-decoration: none; color: inherit; display: block;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      text-decoration: none; color: inherit; display: flex;
+      flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-    /* placeholder thumbnail */
     .project-thumb {
-      width: 100%; height: 160px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--ink-faint); position: relative; overflow: hidden;
+      width: 100%; height: 150px; position: relative; overflow: hidden;
     }
-    .project-thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .project-thumb svg { width: 100%; height: 100%; display: block; }
 
-    /* replace these with <img src="..." /> when you have real screenshots */
-    .thumb-1 { background: var(--ph1); }
-    .thumb-2 { background: var(--ph2); }
-    .thumb-3 { background: var(--ph3); }
+    /* replace with: <img src="/images/proj.png" style="width:100%;height:150px;object-fit:cover;display:block;"> */
+    .thumb-1 { background: #141c14; }
+    .thumb-2 { background: #141418; }
+    .thumb-3 { background: #1c1810; }
 
-    .project-body { padding: 1.25rem 1.5rem 1.5rem; }
-    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem; }
-    .project-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); }
-    .project-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0.75rem; }
-    .tool-badge { font-size: 0.75rem; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 2px 10px; border-radius: 100px; }
-    .project-desc { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6; }
-    .link-icon { font-size: 0.8rem; color: var(--ink-faint); white-space: nowrap; margin-top: 4px; }
+    [data-theme="light"] .thumb-1 { background: #d8ead8; }
+    [data-theme="light"] .thumb-2 { background: #d8d8ea; }
+    [data-theme="light"] .thumb-3 { background: #ead8c8; }
 
-    /* BLOG */
-    .blog-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+    .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+
+    .project-meta {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 0.6rem;
+    }
+
+    .project-cat {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    .project-status {
+      font-size: 0.7rem; padding: 2px 10px;
+      border-radius: 100px; border: 1px solid;
+      font-weight: 500;
+    }
+    .status-live { color: #5db87a; border-color: rgba(93,184,122,0.35); }
+    .status-archived { color: var(--ink-muted); border-color: var(--border); }
+
+    .project-title {
+      font-family: var(--serif); font-size: 1.15rem;
+      font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;
+    }
+
+    .project-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.65; flex: 1; }
+
+    .project-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
+    .tool-tag {
+      font-size: 0.72rem; color: var(--ink-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 2px 10px; border-radius: 4px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-groups { display: flex; flex-direction: column; gap: 2rem; }
+
+    .skill-group-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-chip {
+      font-size: 0.85rem; color: var(--ink);
+      border: 1px solid var(--border);
+      padding: 5px 16px; border-radius: 100px;
+      background: transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .skill-chip:hover { border-color: var(--accent); background: var(--accent-dim); }
+
+    /* ── BLOG ── */
+    .blog-list { display: flex; flex-direction: column; }
 
     .blog-item {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 1rem; align-items: center;
+      display: grid; grid-template-columns: 100px 1fr auto;
+      align-items: center; gap: 1.25rem;
+      padding: 1rem 0; border-bottom: 1px solid var(--border);
       text-decoration: none; color: inherit;
-      padding: 0.75rem; margin: 0 -0.75rem;
-      border-radius: 8px;
       transition: background 0.15s;
     }
-    .blog-item:hover { background: var(--accent-light); }
+    .blog-item:first-child { border-top: 1px solid var(--border); }
     .blog-item:hover .blog-title { color: var(--accent); }
 
-    .blog-thumb {
-      width: 80px; height: 60px; border-radius: 6px;
-      flex-shrink: 0; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .blog-thumb-1 { background: var(--ph4); }
-    .blog-thumb-2 { background: var(--ph5); }
-    .blog-thumb-3 { background: var(--ph6); }
+    .blog-date-col { font-size: 0.75rem; color: var(--ink-muted); white-space: nowrap; }
 
-    .blog-meta { display: flex; flex-direction: column; gap: 3px; }
-    .blog-title { font-family: var(--serif); font-size: 0.95rem; line-height: 1.4; transition: color 0.15s; }
-    .blog-date { font-size: 0.75rem; color: var(--ink-faint); }
+    .blog-title {
+      font-size: 0.95rem; line-height: 1.4;
+      transition: color 0.15s;
+    }
+    .blog-desc { font-size: 0.8rem; color: var(--ink-muted); margin-top: 3px; }
+
+    .blog-arrow { font-size: 0.9rem; color: var(--ink-faint); }
+
+    .blog-cta { margin-top: 1.5rem; }
 
     .btn-outline {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.85rem; color: var(--accent);
-      border: 1px solid var(--accent); border-radius: 8px;
+      font-size: 0.82rem; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 6px;
       padding: 8px 18px; text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-outline:hover { background: var(--accent); color: #fff; }
-    [data-theme="dark"] .btn-outline:hover { color: #0e1f14; }
+    .btn-outline:hover { background: var(--accent); color: #0e0e0c; }
 
-    /* CONTACT — bold full-width closer */
-    .contact-section {
-      margin-top: 2rem;
-      background: var(--accent);
-      padding: 5rem 2rem;
-      text-align: center;
+    /* ── ABOUT + CONTACT ── */
+    .about-contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; max-width: 860px; margin: 0 auto;
+      padding: 4rem 2.5rem; border-top: 1px solid var(--border);
     }
-    .contact-inner { max-width: 560px; margin: 0 auto; }
-    .contact-section .section-label { color: rgba(255,255,255,0.55); margin-bottom: 1.25rem; }
-    .contact-section h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 600; line-height: 1.2;
-      color: #fff; margin-bottom: 0.75rem;
-    }
-    [data-theme="dark"] .contact-section h2 { color: #0e1f14; }
-    .contact-section p {
-      font-size: 1rem; color: rgba(255,255,255,0.7);
-      margin-bottom: 2rem;
-    }
-    [data-theme="dark"] .contact-section p { color: rgba(14,31,20,0.65); }
 
-    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .contact-link-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.875rem; font-weight: 500;
-      color: var(--accent); background: #fff;
-      border-radius: 100px; padding: 8px 20px;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
+    .about-title {
+      font-family: var(--serif); font-size: 2rem;
+      font-weight: 700; margin-bottom: 1rem;
     }
-    [data-theme="dark"] .contact-link-pill { color: #0e1f14; }
-    .contact-link-pill:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .about-text { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+
+    .contact-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
 
     .contact-email {
-      display: inline-block; font-size: 0.9rem;
-      color: rgba(255,255,255,0.85); text-decoration: none;
-      margin-bottom: 1.75rem; border-bottom: 1px solid rgba(255,255,255,0.35);
-      padding-bottom: 2px; transition: border-color 0.2s;
+      display: block; font-size: 1.1rem; font-weight: 500;
+      color: var(--ink); text-decoration: none;
+      margin-bottom: 1.25rem;
+      transition: color 0.2s;
     }
-    [data-theme="dark"] .contact-email { color: rgba(14,31,20,0.75); border-color: rgba(14,31,20,0.3); }
-    .contact-email:hover { border-color: rgba(255,255,255,0.8); }
+    .contact-email:hover { color: var(--accent); }
 
+    .contact-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .contact-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; color: var(--ink);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 5px 16px; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
     footer {
-      text-align: center; padding: 1.5rem 2rem;
-      font-size: 0.8rem; color: var(--ink-faint);
       border-top: 1px solid var(--border);
+      padding: 1.25rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; color: var(--ink-muted);
+      max-width: 100%;
     }
 
-    @media (max-width: 600px) {
-      nav#main-nav { padding: 0 1.25rem; }
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
-      .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .hero { padding-top: 3.5rem; }
-      .contact-section { padding: 3.5rem 1.25rem; }
+      .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-contact { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 1.25rem; }
+      .blog-item { grid-template-columns: 80px 1fr auto; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <nav id="main-nav">
-    <div class="nav-left">
-      <span class="nav-name">Nur Fathia</span>
-      <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Nur Fathia A</span>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light</span>
+      </button>
     </div>
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
-      <span id="themeIcon">🌙</span>
-      <span id="themeLabel">Dark</span>
-    </button>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
-    <span class="hero-tag">Open to work</span>
-    <h1>BI Analyst<br /><em>turning dashboards<br />into decisions.</em></h1>
+    <p class="hero-location">Depok, Indonesia</p>
+    <h1>Your Name</h1>
+    <p class="hero-role">BI Analyst &amp; Data Storyteller</p>
     <p class="hero-desc">
-      I'm a BI Analyst specializing in SQL, dashboard design, and data storytelling.
-      I enjoy uncovering the stories behind the numbers and communicating insights to non-technical stakeholders.
+      Passionate about turning raw data into clear, actionable decisions.
+      I design dashboards, write SQL, and communicate insights that actually get used.
     </p>
     <div class="hero-actions">
-      <a href="/CV-Nur%20Fathia%20Achmadi.pdf" download class="btn-primary">↓ Download CV</a>
-      <a href="#projects" class="btn-ghost">View project →</a>
+      <a href="/CV-Nur%20Fathia%20Achmadi.pdf" download class="btn-primary">Download CV ↓</a>
+      <a href="#projects" class="btn-ghost">View Projects ↓</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/xxodaisy" target="_blank">Github</a>
+      <a href="https://www.linkedin.com/in/nur-fathia-achmadi/" target="_blank">LinkedIn</a>
+      <a href="https://medium.com/@fleursansvoix" target="_blank">Medium</a>
     </div>
   </header>
 
-  <!-- SKILLS -->
-  <section>
-    <p class="section-label">Skills & Tools</p>
-    <div class="skills-grid">
-      <span class="skill-tag">SQL</span>
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">Tableau</span>
-      <span class="skill-tag">Power BI</span>
-      <span class="skill-tag">Google Looker Studio</span>
-      <span class="skill-tag">Excel / Spreadsheet</span>
-      <span class="skill-tag">PostgreSQL</span>
-      <span class="skill-tag">dbt</span>
-      <span class="skill-tag">Docker</span>
-      <span class="skill-tag">Data Storytelling</span>
-      <!-- <span class="skill-tag">Statistics</span> -->
-      <span class="skill-tag">Dashboard Design</span>
-    </div>
-  </section>
-
   <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label">Selected Projects</p>
-    <div class="projects-list">
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
 
-      <a href="https://www.notion.so/Shopping-Mall-Paid-Search-Campaign-Business-Analytics-Projects-2c3d83afd146807eb025f48234e572be?source=copy_link" target="_blank" class="project-card">
-        <!-- Ganti div.project-thumb dengan <img src="/images/project1.png" alt="..." style="width:100%;height:160px;object-fit:cover;display:block;"> -->
-        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shopping Mall Paid"
-             style="width:100%;height:160px;object-fit:cover;display:block;">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">Shopping Mall Paid Search Campaign</span>
-            <span class="link-icon">↗ View Project</span>
-          </div>
-          <p class="project-desc">A shopping mall wants to understand the effectiveness of their paid search campaign over five months period in 2021.</p>
-          <div class="project-tools">
-            <span class="tool-badge">Excel / Spreadsheet</span>
-            <span class="tool-badge">Tableau</span>
-            <!-- <span class="tool-badge">PostgreSQL</span> -->
-          </div>
-        </div>
-      </a>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="dashboard">Dashboard</button>
+      <button class="filter-btn" data-filter="analysis">Analysis</button>
+      <!-- <button class="filter-btn" data-filter="forecasting">Forecasting</button> -->
+    </div>
 
-      <a href="https://www.notion.so/E-Learning-BI-Case-Study-Dummy-Dataset-2aed83afd146811b85c3df605c1d3f09?source=copy_link" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="E-learning"
-             style="width:100%;height:160px;object-fit:cover;display:block;">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">E-Learning BI Case Study (Dummy Dataset)</span>
-            <span class="link-icon">↗ View Project</span>
-          </div>
-          <p class="project-desc">This project simulates a specialized online platform that allows users to purchase courses with or without discount vouchers, redeem vouchers, enroll in classes, and complete classes..</p>
-          <div class="project-tools">
-            <span class="tool-badge">Metabase</span>
-            <span class="tool-badge">PostgreSQL</span>
-            <span class="tool-badge">Dbeaver</span>
-            <span class="tool-badge">Python</span>
-          </div>
-        </div>
-      </a>
+    <div class="projects-grid" id="projectsGrid">
 
-      <a href="https://www.notion.so/Supermarket-Sales-Analysis-Data-Analyst-Project-2b9d83afd14680dfb6f5d2acc3a65c0d?source=copy_link" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Supermarket"
-             style="width:100%;height:160px;object-fit:cover;display:block;">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">Supermarket Sales Analysis</span>
-            <span class="link-icon">↗ View Project</span>
-          </div>
-          <p class="project-desc">Piggy Bank sought to enhance customer loyalty and reduce churn rates by identifying and targeting customers at a high risk of exiting the bank.</p>
-          <div class="project-tools">
-            <span class="tool-badge">Excel / Spreadsheet</span>
-            <span class="tool-badge">Power BI</span>
-            <!-- <span class="tool-badge">Pandas</span> -->
-          </div>
-        </div>
-      </a>
-
-      <a href="https://www.notion.so/Second-Hand-Car-Sales-2aed83afd1468199a48dd9e9f0e87677?source=copy_link" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=983&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="second-car"
-             style="width:100%;height:160px;object-fit:cover;display:block;">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">Second-Hand Car Sales</span>
-            <span class="link-icon">↗ View Project</span>
-          </div>
-          <p class="project-desc">This project is the final assignment of the data analyst bootcamp — assuming there is a company considering building a used car sales business model</p>
-          <div class="project-tools">
-            <span class="tool-badge">Python</span>
-            <span class="tool-badge">Power BI</span>
-            <!-- <span class="tool-badge">Dbeaver</span> -->
-            <!-- <span class="tool-badge">Python</span> -->
-          </div>
-        </div>
-      </a>
-
-      <a href="https://www.notion.so/Food-Story-Sales-Performance-Analysis-2aed83afd146812284c7f60cf1c9d9c6?source=copy_link" target="_blank" class="project-card">
-        <img src="https://media.getredy.id/images/users/61231/14494001331628847327.png" alt="food-story"
-             style="width:100%;height:160px;object-fit:cover;display:block;">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">Food Story – Sales Performance Analysis</span>
-            <span class="link-icon">↗ View Project</span>
-          </div>
-          <p class="project-desc">Food Story is a cloud kitchen that operates many branches in Jakarta and other cities. The company wants to understand the factors that affect sales performance</p>
-          <div class="project-tools">
-            <span class="tool-badge">Power BI</span>
-            <span class="tool-badge">Excel / Spreadsheet</span>
-            <!-- <span class="tool-badge">Dbeaver</span> -->
-            <!-- <span class="tool-badge">Python</span> -->
-          </div>
-        </div>
-      </a>
-
-      <a href="https://www.notion.so/HR-Data-Overhaul-Cleaning-Analyzing-Visualizing-Employee-Data-with-Excel-343d83afd146805a9440c4bc701eb939?source=copy_link" target="_blank" class="project-card">
+      <a href="https://www.notion.so/HR-Data-Overhaul-Cleaning-Analyzing-Visualizing-Employee-Data-with-Excel-343d83afd146805a9440c4bc701eb939?source=copy_link">
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HR-overhaul"
              style="width:100%;height:160px;object-fit:cover;display:block;">
         <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">HR Data Overhaul: Cleaning, Analyzing & Visualizing Employee Data with Excel</span>
-            <span class="link-icon">↗ View Project</span>
+          <div class="project-meta">
+            <span class="project-cat">Analysis · 2026</span>
+            <span class="project-status status-archived">Live</span>
           </div>
-          <p class="project-desc">In this project, my focus was on how to clean the data, how to derive insights and recommendations, and the specific points I wanted to analyze from the data</p>
+          <h3 class="project-title">HR Data Overhaul: Cleaning, Analyzing & Visualizing Employee Data with Excel</h3>
+          <p class="project-desc">In this project, my focus was on how to clean the data, how to derive insights and recommendations, and the specific points I wanted to analyze from the data.</p>
           <div class="project-tools">
-            <span class="tool-badge">Excel</span>
-            <!-- <span class="tool-badge">PostgreSQL</span> -->
-            <!-- <span class="tool-badge">Dbeaver</span> -->
-            <!-- <span class="tool-badge">Python</span> -->
+            <span class="tool-tag">Excel / Spreadsheet</span>
+            <!-- <span class="tool-tag">Power BI</span> -->
+            <!-- <span class="tool-tag">Dbeaver</span> -->
           </div>
         </div>
       </a>
 
+    </div>
+  </section>
+
+      <a href="https://www.notion.so/Shopping-Mall-Paid-Search-Campaign-Business-Analytics-Projects-2c3d83afd146807eb025f48234e572be?source=copy_link" target="_blank"
+         class="project-card" data-category="dashboard">
+        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shopping Mall Paid"
+             style="width:100%;height:160px;object-fit:cover;display:block;">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-cat">Dashboard · 2025</span>
+            <span class="project-status status-live">Live</span>
+          </div>
+          <h3 class="project-title">Shopping Mall Paid Search Campaign</h3>
+          <p class="project-desc">A shopping mall wants to understand the effectiveness of their paid search campaign over five months period in 2021.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Excel / Spreadsheet</span>
+            <span class="tool-tag">Tableau</span>
+            <span class="tool-tag">PostgreSQL</span>
+            <!-- <span class="tool-tag">SQL</span> -->
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.notion.so/E-Learning-BI-Case-Study-Dummy-Dataset-2aed83afd146811b85c3df605c1d3f09?source=copy_link" target="_blank"
+         class="project-card" data-category="analysis">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="E-learning"
+             style="width:100%;height:160px;object-fit:cover;display:block;">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-cat">Analysis · 2025</span>
+            <span class="project-status status-live">Live</span>
+          </div>
+          <h3 class="project-title">E-Learning BI Case Study (Dummy Dataset)</h3>
+          <p class="project-desc">This project simulates a specialized online platform that allows users to purchase courses with or without discount vouchers, redeem vouchers, enroll in classes, and complete classes.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Dbeaver</span>
+            <span class="tool-tag">PostgreSQL</span>
+            <span class="tool-tag">Metabase</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.notion.so/Supermarket-Sales-Analysis-Data-Analyst-Project-2b9d83afd14680dfb6f5d2acc3a65c0d?source=copy_link" target="_blank"
+         class="project-card" data-category="analysis">
+        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Supermarket"
+             style="width:100%;height:160px;object-fit:cover;display:block;">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-cat">Analysis · 2023</span>
+            <span class="project-status status-archived">Live</span>
+          </div>
+          <h3 class="project-title">Supermarket Sales Analysis</h3>
+          <p class="project-desc">Piggy Bank sought to enhance customer loyalty and reduce churn rates by identifying and targeting customers at a high risk of exiting the bank.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Excel / Spreadsheet</span>
+            <span class="tool-tag">Power BI</span>
+            <span class="tool-tag">Pandas</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+      <a href="https://www.notion.so/Second-Hand-Car-Sales-2aed83afd1468199a48dd9e9f0e87677?source=copy_link" target="_blank"
+         class="project-card" data-category="analysis">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=983&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="second-car"
+             style="width:100%;height:160px;object-fit:cover;display:block;">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-cat">Analysis · 2023</span>
+            <span class="project-status status-archived">Live</span>
+          </div>
+          <h3 class="project-title">Second-Hand Car Sales</h3>
+          <p class="project-desc">This project is the final assignment of the data analyst bootcamp — assuming there is a company considering building a used car sales business model.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Power BI</span>
+            <!-- <span class="tool-tag">Dbeaver</span> -->
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+      <a href="https://www.notion.so/Food-Story-Sales-Performance-Analysis-2aed83afd146812284c7f60cf1c9d9c6?source=copy_link" target="_blank"
+         class="project-card" data-category="analysis">
+        <img src="https://media.getredy.id/images/users/61231/14494001331628847327.png" alt="food-story"
+             style="width:100%;height:160px;object-fit:cover;display:block;">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-cat">Analysis · 2023</span>
+            <span class="project-status status-archived">Live</span>
+          </div>
+          <h3 class="project-title">Food Story – Sales Performance Analysis</h3>
+          <p class="project-desc">Food Story is a cloud kitchen that operates many branches in Jakarta and other cities. The company wants to understand the factors that affect sales performance.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Excel / Spreadsheet</span>
+            <span class="tool-tag">Power BI</span>
+            <!-- <span class="tool-tag">Dbeaver</span> -->
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-groups">
+      <div>
+        <p class="skill-group-label">Data & Analytics</p>
+        <div class="skill-chips">
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Pandas</span>
+          <!-- <span class="skill-chip">Statistics</span> -->
+          <!-- <span class="skill-chip">A/B Testing</span> -->
+          <span class="skill-chip">Data Storytelling</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">BI & Visualization</p>
+        <div class="skill-chips">
+          <span class="skill-chip">Metabase</span>
+          <span class="skill-chip">Apache Superset</span>
+          <span class="skill-chip">Tableau</span>
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Looker Studio</span>
+          <span class="skill-chip">Dashboard Design</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Tools & Platforms</p>
+        <div class="skill-chips">
+          <span class="skill-chip">Docker</span>
+          <span class="skill-chip">dbt</span>
+          <span class="skill-chip">Excel</span>
+          <span class="skill-chip">Notion</span>
+          <span class="skill-chip">GitHub</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- BLOG -->
-  <section id="blog">
-    <p class="section-label">Writing</p>
+  <section class="section" id="blog">
+    <h2 class="section-title">Writing</h2>
     <div class="blog-list">
 
-      <a href="https://fleursansvoix.medium.com/setup-apache-superset-dengan-docker-26a47a9bcdc6" target="_blank" class="blog-item">
-        <!-- Ganti div.blog-thumb dengan <img src="/images/blog1.png" alt="..." style="width:80px;height:60px;object-fit:cover;border-radius:6px;"> -->
-        <!-- <div class="blog-thumb blog-thumb-1">📊</div> -->
-        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*3YiuMWp9m44CVj7b.png" alt="apache-superset" style="width:80px;height:60px;object-fit:cover;border-radius:6px;">
-        <div class="blog-meta">
-          <span class="blog-title">Learn about Using Apache Superset</span>
-          <span class="blog-date">May 2026</span>
+      <a href=""https://fleursansvoix.medium.com/setup-apache-superset-dengan-docker-26a47a9bcdc6" target="_blank" class="blog-item">
+        <!-- <span class="blog-date-col">21 May 2026</span> -->
+        <div>
+          <p class="blog-title">Learn about Using Apache Superset</p>
+          <p class="blog-desc">Practical using Apache Superset and setting up before use the data visualization.</p>
         </div>
+        <span class="blog-arrow">→</span>
       </a>
 
       <a href="https://fleursansvoix.medium.com/belajar-etl-pipeline-1-introduction-be31a60c38f0" target="_blank" class="blog-item">
-        <!-- <div class="blog-thumb blog-thumb-2">📈</div> -->
-        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*N4nG237KFAvF4qg0.png" alt="etl-pipeline" style="width:80px;height:60px;object-fit:cover;border-radius:6px;">
-        <div class="blog-meta">
-          <span class="blog-title">Understanding the ETL Pipeline</span>
-          <span class="blog-date">Feb 2025</span>
+        <!-- <span class="blog-date-col">22 Nov 2024</span> -->
+        <div>
+          <p class="blog-title">Understanding the ETL Pipeline</p>
+          <p class="blog-desc">Studying about the ETL Pipeline.</p>
         </div>
+        <span class="blog-arrow">→</span>
       </a>
 
       <a href="https://medium.com/learning-data/how-to-set-up-postgresql-and-metabase-using-docker-6e792deff4f6" target="_blank" class="blog-item">
-        <!-- <div class="blog-thumb blog-thumb-3">🐍</div> -->
-        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*vbN96A7LHscRSxTx.jpg" alt="metabase" style="width:80px;height:60px;object-fit:cover;border-radius:6px;">
-        <div class="blog-meta">
-          <span class="blog-title">How to Set Up PostgreSQL and Metabase Using Docker</span>
-          <span class="blog-date">Jan 2025</span>
+        <!-- <span class="blog-date-col">5 Sep 2024</span> -->
+        <div>
+          <p class="blog-title">How to Set Up PostgreSQL and Metabase Using Docker</p>
+          <p class="blog-desc">Practical using Metabase.</p>
         </div>
+        <span class="blog-arrow">→</span>
       </a>
 
     </div>
-    <a href="https://medium.com/@fleursansvoix" target="_blank" class="btn-outline">
-      View all posts on Medium →
-    </a>
+    <div class="blog-cta">
+      <a href="https://medium.com/@fleursansvoix" target="_blank" class="btn-outline">All posts on Medium →</a>
+    </div>
   </section>
 
-  <!-- CONTACT — bold closer -->
-  <div class="contact-section" id="contact">
-    <div class="contact-inner">
-      <p class="section-label">Hello</p>
-      <h2>Interested in collaborating?<br />or are there any interesting opportunities?</h2>
-      <p>I'm open to full-time or part-time work, freelance projects, and similar roles related to data </p>
+  <!-- ABOUT + CONTACT -->
+  <div class="about-contact" id="about">
+    <div>
+      <h2 class="about-title">About Me</h2>
+      <p class="about-text">
+        I'm a BI Analyst based in Depok, Indonesia. I enjoy turning messy datasets
+        into clear dashboards and reports that help teams make better decisions —
+        faster. Outside work, I write about data on Medium and tinker with side projects.
+      </p>
+      <a href="/CV-Nur%20Fathia%20Achmadi.pdf" download class="btn-primary">Download CV ↓</a>
+    </div>
+    <div>
+      <p class="contact-label">Get in touch</p>
       <a href="mailto:your@email.com" class="contact-email">work.nurfathia@gmail.com</a>
-      <div class="contact-links">
-        <a href="https://www.linkedin.com/in/nur-fathia-achmadi/" target="_blank" class="contact-link-pill">LinkedIn ↗</a>
-        <a href="https://github.com/xxodaisy" target="_blank" class="contact-link-pill">GitHub ↗</a>
-        <a href="https://medium.com/@fleursansvoix" target="_blank" class="contact-link-pill">Medium ↗</a>
+      <div class="contact-pills">
+        <a href="https://www.linkedin.com/in/nur-fathia-achmadi/e" target="_blank" class="contact-pill">LinkedIn ↗</a>
+        <a href="https://github.com/xxodaisy" target="_blank" class="contact-pill">GitHub ↗</a>
+        <a href="https://medium.com/@fleursansvoix" target="_blank" class="contact-pill">Medium ↗</a>
       </div>
     </div>
   </div>
 
-  <footer>Built with plain HTML · Hosted on Vercel</footer>
+  <!-- FOOTER -->
+  <footer>
+    <span>Nur Fathia A</span>
+    <span id="footerYear"></span>
+  </footer>
 
   <script>
+    // Theme toggle
     const btn = document.getElementById('themeBtn');
     const icon = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');
     const html = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+    const saved = localStorage.getItem('theme') || 'dark';
+    setTheme(saved);
+
     btn.addEventListener('click', () => setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
+
     function setTheme(t) {
       html.dataset.theme = t;
       localStorage.setItem('theme', t);
       icon.textContent = t === 'dark' ? '☀️' : '🌙';
       label.textContent = t === 'dark' ? 'Light' : 'Dark';
     }
+
+    // Project filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(card => {
+          card.style.display = (f === 'all' || card.dataset.category === f) ? 'flex' : 'none';
+        });
+      });
+    });
+
+    // Footer year
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
   </script>
 
 </body>
